@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Head from 'next/head'
+import styles from '@/styles/Home.module.css'
 
 
 const Movie = () => {
@@ -24,7 +25,7 @@ const Movie = () => {
 
     useEffect(() => {
         getSingleMovie();
-    }, [id]);
+    }, []);
 
     return (
         <>
@@ -34,10 +35,9 @@ const Movie = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1>Movie Details</h1>
-            {movie != null && <div>
-                <p>{movie.title}</p>
-                <p>{movie.imdbId}</p>
+            <h1 className={styles.centerTitle}>Movie Details</h1>
+            {movie != null && <div className={styles.details}>
+                <h2>{movie.title}</h2>
                 <picture>
                     <img src={movie.poster} alt={movie.title} />
                 </picture>

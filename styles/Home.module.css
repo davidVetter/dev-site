@@ -30,6 +30,15 @@
   border: 2px red solid;
 }
 
+.details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+}
+
 .movieImg {
   width: 100%;
   height: auto;
