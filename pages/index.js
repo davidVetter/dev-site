@@ -6,12 +6,27 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
-  
+  const dispatch = useDispatch();
+  const movies = useSelector(store => store.movieReducer);
+  // Renders the entire app on the DOM
+  function getMovies() {
+    axios.get(`http://localhost:8080/api/v1/movies`).then((response) => {
+      console.log('This is response: ', response.data);
+      dispatch({
+        type: 'SET_MOVIES',
+        payload: response.data
+      });
+    }).catch((err) => {
+      console.log('Erron GET', err);
+    });
+  }
 
-  
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+
   return (
     <>
       <Head>
@@ -23,6 +38,14 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <h1>Hello</h1>
+          {movies && movies.map(movie => {
+            return (
+              <div key={movie.imdbId} className={styles.description}>
+                <h3>{movie.title}</h3>
+                <Image src={movie.poster} alt={movie.title} width={180} height={50}/>
+              </div>
+            )
+          })}
         </div>
       </main>
     </>
