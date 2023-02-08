@@ -9,10 +9,10 @@ const Movie = () => {
     const router = useRouter();
     const { id } = router.query;
     const dispatch = useDispatch();
-    const movie = useSelector(store => store.)
+    const movie = useSelector(store => store.movieReducer);
 
     function getSingleMovie() {
-        axios.get(`http://localhost:8080/api/v1/${id}`).then((response) => {
+        axios.get(`http://localhost:8080/api/v1/movies/${id}`).then((response) => {
             dispatch({
                 type: 'SET_SINGLE_MOVIE',
                 payload: response.data
@@ -24,7 +24,7 @@ const Movie = () => {
 
     useEffect(() => {
         getSingleMovie();
-    }, []);
+    }, [id]);
 
     return (
         <>
@@ -35,6 +35,13 @@ const Movie = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <h1>Movie Details</h1>
+            {movie != null && <div>
+                <p>{movie.title}</p>
+                <p>{movie.imdbId}</p>
+                <picture>
+                    <img src={movie.poster} alt={movie.title} />
+                </picture>
+            </div>}
 
         </>
     )
