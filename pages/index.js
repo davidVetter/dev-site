@@ -3,9 +3,11 @@ import styles from '@/styles/Home.module.css'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const movies = useSelector(store => store.moviesReducer);
 
   function getMovies() {
@@ -26,6 +28,10 @@ export default function Home() {
     getMovies();
   }, []);
 
+  function handleClick(id) {
+    router.push(`/movie/${id}`);
+  }
+
   return (
     <>
       <Head>
@@ -39,7 +45,7 @@ export default function Home() {
           <div className={styles.movies}>
           {movies.map(movie => {
             return (
-              <div key={movie.imdbId} className={styles.imgCard}>
+              <div key={movie.imdbId} className={styles.imgCard} onClick={()=>handleClick(movie.imdbId)}>
                 <h3 className={styles.centerTitle}>{movie.title}</h3>
                 <picture>
                   <img src={movie.poster} alt={movie.title} className={styles.movieImg}/>

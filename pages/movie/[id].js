@@ -31,7 +31,7 @@ const Movie = () => {
             <Head>
                 <title>Single Movie - Vetter Dev</title>
                 <meta name="description" content="Movie details"/>
-                <meta name="viewport" content="width=device-width, intial-scale=1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <h1>Movie Details</h1>
