@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
   const dispatch = useDispatch();
-  const movies = useSelector(store => store.movieReducer);
+  const movies = useSelector(store => store.moviesReducer);
 
   function getMovies() {
     // Retreive list of movies from api
