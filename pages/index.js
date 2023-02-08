@@ -1,15 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movieReducer);
-  // Renders the entire app on the DOM
+
   function getMovies() {
     axios.get(`http://localhost:8080/api/v1/movies`).then((response) => {
       console.log('This is response: ', response.data);
@@ -26,7 +25,7 @@ export default function Home() {
     getMovies();
   }, []);
 
-
+  console.log(styles);
   return (
     <>
       <Head>
@@ -35,14 +34,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <h1>Hello</h1>
+      <main>
+        <h1 className={styles.center}>Vetter Dev Movie Gallery</h1>
+          <div className={styles.movies}>
           {movies && movies.map(movie => {
             return (
-              <div key={movie.imdbId} className={styles.description}>
-                <h3>{movie.title}</h3>
-                <Image src={movie.poster} alt={movie.title} width={180} height={50}/>
+              <div key={movie.imdbId} className={styles.imgCard}>
+                <h3 className={styles.centerTitle}>{movie.title}</h3>
+                <picture>
+                  <img src={movie.poster} alt={movie.title} className={styles.movieImg}/>
+                </picture>
               </div>
             )
           })}
