@@ -12,7 +12,7 @@ export default function Home() {
 
   function getMovies() {
     // Retreive list of movies from api
-    axios.get(`http://localhost:8080/api/v1/movies`).then((response) => {
+    axios.get(`/api/hello`).then((response) => {
       dispatch({
         // SET MOVIES in redux
         type: 'SET_MOVIES',
