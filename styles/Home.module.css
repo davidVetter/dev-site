@@ -7,6 +7,60 @@
   min-height: 100vh;
 }
 
+.movies {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 25px;
+  width: 90%;
+  margin: 0 auto 10%;
+}
+
+
+.imgCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+  border-radius: 7px;
+  border: 2px red solid;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+}
+
+.movieImg {
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+.imgCard:hover {
+  animation: 0.75s rotate alternate-reverse infinite;
+  width: 110%;
+  height: auto;
+  padding: 10px;
+  background: var(--tile-border);
+}
+
+.centerTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -131,7 +185,7 @@
 }
 
 /* Conic Gradient Animation */
-.thirteen::before {
+.testing::before {
   animation: 6s rotate linear infinite;
   width: 200%;
   height: 200%;
@@ -139,7 +193,7 @@
 }
 
 /* Inner Square */
-.thirteen::after {
+.testing::after {
   inset: 0;
   padding: 1px;
   border-radius: var(--border-radius);
@@ -270,9 +324,9 @@
 
 @keyframes rotate {
   from {
-    transform: rotate(360deg);
+    transform: rotate(18deg);
   }
   to {
-    transform: rotate(0deg);
+    transform: rotate(-18deg);
   }
 }
