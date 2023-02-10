@@ -13,7 +13,7 @@ const Movie = () => {
     const movie = useSelector(store => store.movieReducer);
 
     function getSingleMovie() {
-        axios.get(`http://localhost:8080/api/v1/movies/${id}`).then((response) => {
+        axios.get(`/api/${id}`).then((response) => {
             dispatch({
                 type: 'SET_SINGLE_MOVIE',
                 payload: response.data
